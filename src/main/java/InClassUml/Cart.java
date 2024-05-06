@@ -12,17 +12,29 @@ public class Cart {
         this.arrayList = arrayList;
     }
 
-    public int  cartQty(){
-         return 0;
+    public int cartQty() {
+        System.out.print("Your total items are ");
+        return arrayList.size();
     }
-    public double subTotal(){
-         return 0.0;
-    }
-    public double totalAfterTax(){
-         return 0.0;
+    public double subTotal() {
+        double total = 0.0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            Product product = arrayList.get(i);
+            total += product.getPrice();
+        }
+        return total;
+
+    }public double totalAfterTax(){
+        double totalWithTax = subTotal() + (subTotal() * tax);
+        System.out.printf("Your total price after tax is $%.2f\n" , totalWithTax);
+        return totalWithTax;
     }
     public void checkOut(){
 
+    }public void addProduct(Product product){
+        arrayList.add(product);
+    }public ArrayList<Product> getProductList() {
+        return arrayList;
     }
 
 }
